@@ -1,0 +1,3 @@
+
+# Placeholder for AWS deployment configuration.
+# Depending on the AWS service you choose (e.g., ECS, EKS), the YAML configuration would differ.
