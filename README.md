@@ -18,45 +18,62 @@ pip install -r requirements.txt
 python run.py
 ```
 
+## Setting Up Docker Hub Secrets for Automated Docker Image Builds
+
+These secrets are vital for automating Docker image builds using CI/CD tools like GitHub Actions. Once the image is built and stored on Docker Hub, it can be deployed to various platforms, including AWS Elastic Beanstalk, Kubernetes, and more.
+
+1. **Create Docker Hub Access Token**:
+   Log in to Docker Hub with your credentials. Click on your profile icon in the top right corner. Navigate to Account Settings -> Security, Click Create a New Access Token.
+
+2. **Set Up Docker Hub Secrets in Your Github Repo**:
+   Go to Settings -> Secrets and Variables -> Actions, click New Repository Secret. 
+   
+   For the name field, enter DOCKERHUB_USERNAME, and for the value field, enter your Docker Hub account username.
+
+   Similarly, add another secret: for the name field, enter DOCKERHUB_TOKEN and for the value field, paste the access token you created in step 1.
+
 ## Deploy to AWS Elastic Beanstalk
 
-1. **Install the EB CLI**:
-   If you haven't already, install the EB CLI on your local machine.
+1. **Set Up Docker Image Path**
+   Update the "Name" field in Dockerrun.aws.json to match the format: "yourusername/reponame:tag".
+
+2. **Install the EB CLI**:
+   If you haven't already installed the EB CLI on your local machine, you can do so using the following command:
    ```
    pip install awsebcli
    ```
 
-2. **Initialize Your Application**:
+3. **Initialize Your Application**:
    Navigate to your project directory and run:
    ```
    eb init
    ```
  
-3. **Add AWS credentials**:
-   The CLI will ask if you want to use AWS credentials from your shared credential file or if you want to input them. If you choose to input them, you will be prompted to provide your AWS Access Key ID and Secret Access Key. These are generated from the AWS Management Console, specifically from the Identity and Access Management (IAM) section.
+4. **Add AWS Credentials**:
+   The CLI will ask your AWS credentials if you have never set up in your computer, you will be prompted to provide your AWS Access Key ID and Secret Access Key. These are generated from the AWS Management Console, specifically from the Identity and Access Management (IAM) section. Once provided, the eb CLI stores these credentials in a profile (by default, the profile is named default) located in ~/.aws/config on macOS and Linux or C:\Users\USERNAME\.aws\config on Windows. 
 
-   Once provided, the eb CLI stores these credentials in a profile (by default, the profile is named default) located in ~/.aws/credentials on macOS and Linux or C:\Users\USERNAME\.aws\credentials on Windows. 
+   Answer all questions, select the platform branch with 2) Docker running on 64bit Amazon Linux 2 unless you have specific reason.
 
-4. **Create an Environment and Deploy**:
+5. **Create an Environment and Deploy**:
    Once initialized, create an environment and deploy your application with:
    ```
    eb create your-environment-name
    ```
 
-5. **Update the Code and Deploy**:
+6. **Update the Code and Deploy**:
    During the time updating your code, just commit the code and run to update the app:
    ```
    eb deploy
 
    ```
 
-6. **Open in Browser**:
+7. **Open in Browser**:
    Your application is deployed on AWS Elastic Beanstalk. You can open it in a web browser with:
    ```
    eb open
    ```
 
-7. **View Logs**:
+8. **View Logs**:
    If you encounter any issues during deployment, you can view the logs with:
    ```
    eb logs
