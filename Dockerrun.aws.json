@@ -1,7 +1,7 @@
 {
     "AWSEBDockerrunVersion": "1",
     "Image": {
-        "Name": "path_to_your_image_on_registry",
+        "Name": "linghong/addtomake:latest",
         "Update": "true"
     },
     "Ports": [

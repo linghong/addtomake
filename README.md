@@ -35,7 +35,7 @@ These secrets are vital for automating Docker image builds using CI/CD tools lik
 ## Deploy to AWS Elastic Beanstalk
 
 1. **Set Up Docker Image Path**
-   Update the "Name" field in Dockerrun.aws.json to match the format: "yourusername/reponame:tag".
+   Update the "Name" field in Dockerrun.aws.json to match the format: "yourusername/yourdockerreponame:tag".
 
 2. **Install the EB CLI**:
    If you haven't already installed the EB CLI on your local machine, you can do so using the following command:
