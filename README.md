@@ -1,7 +1,7 @@
 # APP Template for No-Code Platforms
 
 ## GOAL
-This template is designed to equip developers with the tools needed to build apps compatible with Zapier and Integromat (now known as Make). It comes with built-in OAuth2 and webhook capabilities to seamlessly integrate with these no-code platforms. Additionally, the guide provides a straightforward approach to deploying on AWS, enabling developers to further customize the template and launch their apps.
+This template is designed to equip developers with the tools needed to build apps compatible with Zapier and Make (previously known as Integromat). It comes with built-in OAuth2 and webhook capabilities to seamlessly integrate with these no-code platforms. Additionally, the guide provides a straightforward approach to deploying on AWS, enabling developers to further customize the template and launch their apps.
 
 ## Install
 
@@ -12,7 +12,7 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-## Run Local
+## Run Locally
 
 ```bash
 python run.py
@@ -50,9 +50,9 @@ These secrets are vital for automating Docker image builds using CI/CD tools lik
    ```
  
 4. **Add AWS Credentials**:
-   The CLI will ask your AWS credentials if you have never set up in your computer, you will be prompted to provide your AWS Access Key ID and Secret Access Key. These are generated from the AWS Management Console, specifically from the Identity and Access Management (IAM) section. Once provided, the eb CLI stores these credentials in a profile (by default, the profile is named default) located in ~/.aws/config on macOS and Linux or C:\Users\USERNAME\.aws\config on Windows. 
+  If you have not previously set up the CLI with your AWS credentials on your computer, it will prompt you to provide your AWS Access Key ID and Secret Access Key. These are generated from the AWS Management Console, specifically from the Identity and Access Management (IAM) section. Once provided, the eb CLI stores these credentials in a profile (by default, the profile is named default) located in ~/.aws/config on macOS and Linux or C:\Users\USERNAME\.aws\config on Windows. 
 
-   Answer all questions, select the platform branch with 2) Docker running on 64bit Amazon Linux 2 unless you have specific reason.
+   Answer all questions, select the platform branch with "Docker running on 64bit Amazon Linux 2" unless you have specific reason.
 
 5. **Create an Environment and Deploy**:
    Once initialized, create an environment and deploy your application with:
@@ -63,6 +63,7 @@ These secrets are vital for automating Docker image builds using CI/CD tools lik
 6. **Update the Code and Deploy**:
    During the time updating your code, just commit the code and run to update the app:
    ```
+   export AWS_PROFILE=eb-cli
    eb deploy
 
    ```
